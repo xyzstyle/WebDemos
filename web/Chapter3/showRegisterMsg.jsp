@@ -20,7 +20,7 @@
 <%
     request.setCharacterEncoding("utf-8");
     String name = formatStr(request.getParameter("name"));
-    String pwd = formatStr(request.getParameter("password"));
+    String pwd = formatStr(request.getParameter("pwd"));
     String confirm_pwd = formatStr(request.getParameter("confirm_pwd"));
     String email = formatStr(request.getParameter("email"));
     String gender = formatStr(request.getParameter("gender"));
