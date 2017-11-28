@@ -11,11 +11,8 @@
     <title>Title</title>
 </head>
 <body>
-<% out.println("<h1>JSP表达式 </h1>");
-    out.println("<b>PI 的值： </b>");
-    out.println(Math.PI);
-%>
-<%=Math.PI %><br/>
+<h1>JSP表达式 </h1>
+<b>PI 的值： </b><%=Math.PI %><br/>
 <b>100,99中最大的值 :</b><%=Math.max(100, 99) %><br/>
 <b>100,99中最小的值 :</b><%=Math.min(100, 99) %><br/>
 <b>3+2-5的值 :</b><%=3 + 2 - 5 %><br/>
