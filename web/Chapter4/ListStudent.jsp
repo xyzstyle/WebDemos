@@ -1,9 +1,8 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page contentType="text/html;charset=UTF-8" import="java.sql.*" language="java" %>
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>学生管理</title>
+
 
     <%
 
@@ -24,7 +23,7 @@
 </head>
 
 <body>
-<table width="550" height="48" border="1" align="center" cellpadding="0" bordercolorlight="#000000" cellspacing="2"
+<table width="550" height="48" border="1" align="center" cellpadding="0"  cellspacing="0"
        bordercolor="#FFFFFF">
     <caption>学生管理</caption>
     <tr bgcolor="#CCFF66">
@@ -48,7 +47,7 @@
         while (rs.next()) {
             int id = rs.getInt(1);
     %>
-    <tr bgcolor="#CCcF90">
+    <tr bgcolor="#CCCF90">
         <td align="center"><%=id%>
         </td>
         <td><%=rs.getString(2)%>
@@ -58,7 +57,7 @@
         <td><%=rs.getString(4)%>
         </td>
         <td align="center"><a href="ModifyStudent.jsp?id=<%=id%>">修改&nbsp;&nbsp;</a>
-            <a href="delete.jsp?bhao=<%=id%>">删除</a></td>
+            <a href="Delete.jsp?id=<%=id%>">删除</a></td>
 
     </tr>
     <%

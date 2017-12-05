@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8"  language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>学生管理</title>
 </head>
 <body>
 
@@ -39,9 +39,9 @@
         </td>
         <td>
         </td>
-        <td>%>
+        <td>
         </td>
-        <td>%>
+        <td>
         </td>
 
 
