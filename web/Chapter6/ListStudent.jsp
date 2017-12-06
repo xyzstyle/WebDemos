@@ -5,6 +5,7 @@
 
 
     <%
+
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://127.0.0.1:3306/db_jw";
         String user = "root";
@@ -20,8 +21,10 @@
     %>
 
 </head>
+
 <body>
-<table width="550" height="48" border="1" align="center" cellpadding="0" cellspacing="0"
+<p align="right"><a href="AddStudent.jsp">新增用户</a></p>
+<table width="550" height="48" border="1" align="center" cellpadding="0"  cellspacing="0"
        bordercolor="#FFFFFF">
     <caption>学生管理</caption>
     <tr bgcolor="#CCFF66">
@@ -55,7 +58,7 @@
         <td><%=rs.getString(4)%>
         </td>
         <td align="center"><a href="ModifyStudent.jsp?id=<%=id%>">修改&nbsp;&nbsp;</a>
-            <a href="DeleteStudent.jsp?id=<%=id%>">删除</a></td>
+            <a href="UserOperatorCenter.jsp?method=3&id=<%=id%>">删除</a></td>
 
     </tr>
     <%

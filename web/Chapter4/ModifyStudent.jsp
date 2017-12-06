@@ -26,7 +26,7 @@
 %>
 <body>
 <p align="center">个人信息数据</p>
-<form id="form1" name="form1" method="post" action="UpdateStudent.jsp?id=<%=id%>">
+<form id="form1" name="form1" method="post" action="UpdateStudent1.jsp?id=<%=id%>">
     <table align="center" width="260" border="0">
         <tr>
             <th width="64" scope="row">姓名：</th>

@@ -13,12 +13,11 @@
 <body>
 <%
     out.println("欢迎来到 JSP：内置对象");
-    //out.print("<br/>");
+    out.print("<br/>");
     out.write("欢迎来到 JSP：内置对象");
     int i=5;
     out.print("<br/>");
     out.print(i);
-
     out.write(i);
 %>
 </body>

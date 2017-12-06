@@ -12,20 +12,31 @@
     String url = "jdbc:mysql://127.0.0.1:3306/db_jw";
     String user = "root";
     String password = "123456";
+    Connection conn = null;
     try {
         Class.forName(driver);
-        Connection conn = DriverManager.getConnection(url, user, password);
+        conn = DriverManager.getConnection(url, user, password);
         if (!conn.isClosed())
             System.out.println("Succeeded connecting to the Database!");
-        Statement stmt = conn.createStatement();
+        PreparedStatement ps = conn.prepareStatement("update student set name=?,password=?,address=?  where id=?");
         request.setCharacterEncoding("utf-8");
         String id = request.getParameter("id");
-        String sql = "delete from student where id=" + id;
-        stmt.executeUpdate(sql);
-        stmt.close();
+        String name = request.getParameter("name");
+        String password1 = request.getParameter("password");
+        String address = request.getParameter("address");
+        ps.setString(1, name);
+        ps.setString(2, password1);
+        ps.setString(3, address);
+        ps.setString(4, id);
+        int i = ps.executeUpdate();
+        if (i > 0) {
+            System.out.print("abc");
+        }
         conn.close();
     } catch (Exception ex) {
         out.println(ex.getMessage());
+    } finally {
+        if (conn != null) conn.close();
     }
     response.sendRedirect("ListStudent.jsp");
 %>
