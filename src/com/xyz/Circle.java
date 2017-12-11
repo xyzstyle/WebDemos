@@ -1,7 +1,7 @@
 package com.xyz;
 
 public class Circle {
-    int radius;
+    private int radius;
 
     public Circle() {
         radius = 1;

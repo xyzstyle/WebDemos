@@ -3,4 +3,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <servlet>
+        <servlet-name>MyServlet</servlet-name>
+        <servlet-class>xyz.servlet.MyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyServlet</servlet-name>
+        <url-pattern>/My.do</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DbServlet</servlet-name>
+        <servlet-class>xyz.servlet.DbServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DbServlet</servlet-name>
+        <url-pattern>/db.do</url-pattern>
+    </servlet-mapping>
 </web-app>
