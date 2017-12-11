@@ -34,6 +34,7 @@
         int count=ps.executeUpdate();
         if (count > 0) {
             System.out.println("success");
+
         }
     } catch (ClassNotFoundException ex) {
         out.println(ex.getMessage());

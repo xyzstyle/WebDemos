@@ -12,8 +12,16 @@
 </head>
 <body>
 <h1>Forward2</h1>
+<%!
+    String getMsg(String name) {
+        return name+"'s secret message";
+    }
+%>
 <%
-    RequestDispatcher rd = request.getRequestDispatcher("forward3.jsp");
+    request.setCharacterEncoding("utf-8");
+    String name = request.getParameter("name");
+    request.setAttribute("msg",getMsg(name));
+    RequestDispatcher rd = request.getRequestDispatcher("/Chapter6/example/forward3.jsp");
     rd.forward(request, response);
 %>
 </body>

@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.lang.reflect.Array" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: xyz
   Date: 2017/11/27
@@ -12,45 +13,24 @@
 </head>
 <body>
 <%!
-    public String formatStr(String str){
-        return str==null?"":str;
+    ArrayList<String> getMsg(){
+        ArrayList<String> lists = new ArrayList<>();
+        lists.add("abc");
+        lists.add("def");
+        return lists;
     }
 %>
 
 <%
-    request.setCharacterEncoding("utf-8");
-    String name = formatStr(request.getParameter("name"));
-    String pwd = formatStr(request.getParameter("pwd"));
-    String confirm_pwd = formatStr(request.getParameter("confirm_pwd"));
-    String email = formatStr(request.getParameter("email"));
-    String gender = formatStr(request.getParameter("gender"));
-    String education = formatStr(request.getParameter("education"));
+    request.setAttribute("msg",getMsg());
+    RequestDispatcher dispatcher=request.getRequestDispatcher("/Chapter3/third.jsp");
+
+    dispatcher.forward(request,response);
+
 %>
 <div align='center'>
 
-    <table border="1" cellspacing="0" cellpadding="0">
-        <caption>您注册成功了</caption>
-        <tr>
-            <td>您的用户名是:</td>
-            <td><% out.print(name);%></td>
-        </tr>
-        <tr>
-            <td>您的密码是:</td>
-            <td><% out.print(pwd);%></td>
-        </tr>
-        <tr>
-            <td>您的性别是:</td>
-            <td><% out.print(gender);%></td>
-        </tr>
-        <tr>
-            <td>您的学历是:</td>
-            <td><% out.print(education);%></td>
-        </tr>
-        <tr>
-            <td>您的电子邮箱是:</td>
-            <td><% out.print(email);%></td>
-        </tr>
-    </table>
+
 
 
 </div>

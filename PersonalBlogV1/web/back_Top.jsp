@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <script language="javascript" src="JS/onclock.js"></script>
 <body  onLoad="clockon(bgclock)">
 	<table width="800" height="65" border="0" align="center"

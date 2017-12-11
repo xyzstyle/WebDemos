@@ -13,9 +13,12 @@
 <body>
 <h1>Forward3</h1>
 <%
-    request.setCharacterEncoding("utf-8");
+    //request.setCharacterEncoding("utf-8");
     String username = request.getParameter("username");
+    String msg = (String) request.getAttribute("msg");
 %>
 用户名为: <%=username %>
+<%="<br/>"%>
+信息：<%=msg%>
 </body>
 </html>
