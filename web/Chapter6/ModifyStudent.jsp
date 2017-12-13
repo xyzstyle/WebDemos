@@ -30,6 +30,7 @@
 %>
 <form id="form1" name="form1" method="post" action="UserOperatorCenter.jsp?method=2&id=<%=id%>">
     <table align="center" width="260" border="0">
+        <caption style="font-size: large">学生修改</caption>
         <tr>
             <th width="64" scope="row">姓名：</th>
             <td width="120">

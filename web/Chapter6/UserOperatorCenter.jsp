@@ -51,8 +51,6 @@
             rd.forward(request, response);
 
         }
-%>
-<%
         break;
         case 2: {
             String name = request.getParameter("name");
@@ -69,6 +67,7 @@
                 } else {
                     out.print("<script language=javascript>alert('修改失败！');history.go(-1);</script>");
                 }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -86,7 +85,7 @@
                 }
 
             } catch (Exception e) {
-
+                 e.printStackTrace();
             }
 
             break;

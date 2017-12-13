@@ -1,4 +1,4 @@
-<%@ page import="xyz.model.StudentModel" %><%--
+<%@ page import="model.StudentModel" %><%--
   Created by IntelliJ IDEA.
   User: xyz
   Date: 2017/12/5
@@ -6,8 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="CheckPermission.jsp" %>
-<jsp:useBean id="dao" class="xyz.dao.StudentDao"/>
+<jsp:useBean id="dao" class="dao.StudentDao"/>
 <html>
 <head>
     <title>修改</title>
@@ -15,18 +14,11 @@
 </head>
 <body>
 <%
-    StudentModel student=null;
-    if (request.getParameter("id") == null) {
-        response.sendRedirect("ListStudent.jsp");
-        return;
-    }else {
-        student = dao.queryStudentModel(Integer.parseInt(request.getParameter("id")));
-    }
+    StudentModel student = dao.queryStudentModel(Integer.parseInt(request.getParameter("id")));
 
 %>
-<form id="form1" name="form1" method="post" action="StudentOperatorCenter.jsp?method=2&id=<%=student.getId()%>">
+<form id="form1" name="form1" method="post" action="UserOperatorCenter.jsp?method=2&id=<%=student.getId()%>">
     <table align="center" width="260" border="0">
-        <caption style="font-size: large">学生修改</caption>
         <tr>
             <th width="64" scope="row">姓名：</th>
             <td width="120">

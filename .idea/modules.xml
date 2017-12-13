@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PersonalBlogV0/PersonalBlogV0.iml" filepath="$PROJECT_DIR$/PersonalBlogV0/PersonalBlogV0.iml" />
       <module fileurl="file://$PROJECT_DIR$/PersonalBlogV1/PersonalBlogV1.iml" filepath="$PROJECT_DIR$/PersonalBlogV1/PersonalBlogV1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TA_Temp/TA_Temp.iml" filepath="$PROJECT_DIR$/TA_Temp/TA_Temp.iml" />
       <module fileurl="file://$PROJECT_DIR$/TeachingAffairV1/TeachingAffairV1.iml" filepath="$PROJECT_DIR$/TeachingAffairV1/TeachingAffairV1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TeachingAffairV2/TeachingAffairV2.iml" filepath="$PROJECT_DIR$/TeachingAffairV2/TeachingAffairV2.iml" />
       <module fileurl="file://$PROJECT_DIR$/WebDemos.iml" filepath="$PROJECT_DIR$/WebDemos.iml" />
     </modules>
   </component>

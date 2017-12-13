@@ -1,12 +1,10 @@
-package xyz.dao;
+package dao;
 
-import xyz.connection.DatabaseConnection;
-import xyz.model.StudentModel;
-import xyz.model.UserModel;
+import connection.DatabaseConnection;
+import model.UserModel;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 
 public class UserDao {
     private DatabaseConnection connection = null;
@@ -17,18 +15,21 @@ public class UserDao {
         connection = new DatabaseConnection();
     }
 
-    public int userLogin(UserModel model) {
+    public boolean userLogin(UserModel model) {
 
         String sql = "select * from user where name='" + model.getName() + "' and password = '" + model.getPassword() + "'";
         ResultSet rs = connection.executeQuery(sql);
         try {
             rs.next();
-            return rs.getInt(4);
+            if (rs.getInt(4) == 0) {
+                return true;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             connection.close();
         }
-        return -1;
+
+        return false;
     }
 }

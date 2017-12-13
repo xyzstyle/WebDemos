@@ -19,9 +19,9 @@
 %>
 <%
     request.setCharacterEncoding("utf-8");
-    String name = request.getParameter("name");
+    String name = request.getParameter("username");
     request.setAttribute("msg",getMsg(name));
-    RequestDispatcher rd = request.getRequestDispatcher("/Chapter6/example/forward3.jsp");
+    RequestDispatcher rd = request.getRequestDispatcher("forward3.jsp");
     rd.forward(request, response);
 %>
 </body>

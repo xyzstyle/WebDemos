@@ -1,10 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
 <title>添加学生</title>
 </head>
 <body>
-	<p align="center">新增学生</p>
+	<p align="center">新增个人信息数据</p>
 	<form id="form1" name="form1" method="post"
 		action="UserOperatorCenter.jsp?method=1">
 		<table align="center" width="260" border="0">
