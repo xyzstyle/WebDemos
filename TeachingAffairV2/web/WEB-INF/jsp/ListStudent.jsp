@@ -15,7 +15,7 @@
 </head>
 
 <body>
-<p align="right"><a href="../../AddStudent.jsp">新增用户</a></p>
+<p align="right"><a href="stu.do?method=1">新增用户</a></p>
 <table width="550" height="48" border="1" align="center" cellpadding="0" cellspacing="0"
        bordercolor="#FFFFFF">
     <caption style="font-size: x-large">学生管理</caption>

@@ -72,19 +72,19 @@ public class StudentServlet extends HttpServlet {
 
     public void addStudent(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String result;
-        studentDao = new StudentDao();
-        if (studentDao.operateStudent(method, student)) {
-            result = "添加用户成功!";
-        } else {
-            result = "添加用户失败!";
+        if(!student.getName().equals("")){
+            String result;
+            studentDao = new StudentDao();
+            if (studentDao.operateStudent(method, student)) {
+                result = "添加用户成功!";
+            } else {
+                result = "添加用户失败!";
+            }
+            request.setAttribute("result", result);
         }
-        request.setAttribute("result", result);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("AddStudent.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/AddStudent.jsp");
         requestDispatcher.forward(request, response);
         // 不能够使用response.sendRedirect()方法
-
     }
 
     private void updateStudent(HttpServletRequest request, HttpServletResponse response)
@@ -107,7 +107,6 @@ public class StudentServlet extends HttpServlet {
             request.setAttribute("result", "<script language=javascript>alert('删除失败！');</script>");
         }
         listStudents(request, response);
-
     }
 
     private void modifyStudent(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
