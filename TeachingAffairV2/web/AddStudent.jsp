@@ -7,7 +7,7 @@
 <body>
 	<p align="center">新增学生</p>
 	<form id="form1" name="form1" method="post"
-		action="StudentOperatorCenter.jsp?method=1">
+		action="stu.do?method=1">
 		<table align="center" width="260" border="0">
 			<tr>
 				<th width="64" scope="row">姓名：</th>

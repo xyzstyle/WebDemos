@@ -15,16 +15,9 @@
 </head>
 <body>
 <%
-    StudentModel student=null;
-    if (request.getParameter("id") == null) {
-        response.sendRedirect("ListStudent.jsp");
-        return;
-    }else {
-        student = dao.queryStudentModel(Integer.parseInt(request.getParameter("id")));
-    }
-
+    StudentModel student = (StudentModel) request.getAttribute("student");
 %>
-<form id="form1" name="form1" method="post" action="StudentOperatorCenter.jsp?method=2&id=<%=student.getId()%>">
+<form id="form1" name="form1" method="post" action="stu.do?method=2&id=<%=student.getId()%>">
     <table align="center" width="260" border="0">
         <caption style="font-size: large">学生修改</caption>
         <tr>

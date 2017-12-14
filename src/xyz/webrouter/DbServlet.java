@@ -1,4 +1,4 @@
-package xyz.servlet;
+package xyz.webrouter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

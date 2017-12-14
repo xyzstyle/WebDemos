@@ -14,7 +14,7 @@
 
 <body>
 <p align="center">用户登录</p>
-<form id="form1" name="form1" method="post" action="DoLogin.jsp">
+<form id="form1" name="form1" method="post" action="login.do">
     <table align="center" width="260" border="0">
         <tr>
             <th width="64" scope="row">姓名：</th>

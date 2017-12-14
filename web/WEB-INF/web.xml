@@ -5,7 +5,7 @@
          version="3.1">
     <servlet>
         <servlet-name>MyServlet</servlet-name>
-        <servlet-class>xyz.servlet.MyServlet</servlet-class>
+        <servlet-class>xyz.webrouter.MyServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MyServlet</servlet-name>
@@ -13,7 +13,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>DbServlet</servlet-name>
-        <servlet-class>xyz.servlet.DbServlet</servlet-class>
+        <servlet-class>xyz.webrouter.DbServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DbServlet</servlet-name>
