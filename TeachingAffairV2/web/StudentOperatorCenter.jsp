@@ -6,17 +6,20 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ include file="CheckPermission.jsp" %>
+<jsp:useBean id="dao" class="xyz.dao.StudentDao"/>
+<jsp:useBean id="student" class="xyz.model.StudentModel"/>
+<%
+    request.setCharacterEncoding("utf-8");
+%>
+<jsp:setProperty name="student" property="*"/>
 <html>
 <head>
     <title>Insert title here</title>
 </head>
 <body>
-<jsp:useBean id="dao" class="dao.StudentDao"/>
-<jsp:useBean id="student" class="model.StudentModel"/>
-<jsp:setProperty name="student" property="*"/>
 <%
-    request.setCharacterEncoding("utf-8");
+
     int method = Integer.parseInt(request.getParameter("method"));
     String result = "";
     switch (method) {
@@ -37,6 +40,7 @@
             } else {
                 out.print("<script language=javascript>alert('修改失败！');history.go(-1);</script>");
             }
+
         }
         break;
         case 3:

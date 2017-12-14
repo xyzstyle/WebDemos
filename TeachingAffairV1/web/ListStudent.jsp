@@ -1,8 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" import="java.sql.*" language="java" %>
 <%@ page import="xyz.model.StudentModel" %>
 <%@ page import="java.util.List" %>
-<jsp:useBean id="dao" class="xyz.dao.StudentDao"/>
 <%@ include file="CheckPermission.jsp"%>
+<jsp:useBean id="dao" class="xyz.dao.StudentDao"/>
+
 <html>
 <head>
     <title>学生管理</title>

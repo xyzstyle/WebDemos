@@ -16,18 +16,17 @@
 </head>
 <body>
 <%
-    int level = dao.userLogin(user);
-    if (level >= 0) {
-        session.setAttribute("userLevel", level);
+     int level=dao.userLogin(user);
+     if(level==0){
+         session.setAttribute("userLevel",level);
          Cookie c = new Cookie("user", user.getName());
          c.setMaxAge(60);
          response.addCookie(c);
-        if (level == 0)
-            out.print("<script language=javascript>alert('登录成功！');window.location.href='ListStudent.jsp';</script>");
+         out.print("<script language=javascript>alert('登录成功！');window.location.href='ListStudent.jsp';</script>");
 
-    } else {
-        out.print("<script language=javascript>alert('登录失败！');history.go(-1);</script>");
-    }
+     }else{
+         out.print("<script language=javascript>alert('登录失败！');history.go(-1);</script>");
+     }
 %>
 </body>
 </html>

@@ -1,18 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" import="java.sql.*" language="java" %>
-<%@ page import="model.StudentModel" %>
+<%@ page import="xyz.model.StudentModel" %>
 <%@ page import="java.util.List" %>
-<jsp:useBean id="dao" class="dao.StudentDao"/>
+<jsp:useBean id="dao" class="xyz.dao.StudentDao"/>
+<%@ include file="CheckPermission.jsp"%>
 <html>
 <head>
     <title>学生管理</title>
+    <%
+        List<StudentModel> students=dao.queryStudentList();
+    %>
+
 </head>
 
 <body>
-<%
-    List<StudentModel> students = dao.queryStudentList();
-%>
 <p align="right"><a href="AddStudent.jsp">新增用户</a></p>
-<table width="550" height="48" border="1" align="center" cellpadding="0" cellspacing="0"
+<table width="550" height="48" border="1" align="center" cellpadding="0"  cellspacing="0"
        bordercolor="#FFFFFF">
     <caption style="font-size: x-large">学生管理</caption>
     <tr bgcolor="#CCFF66">
@@ -33,7 +35,7 @@
         </th>
     </tr>
     <%
-        for (StudentModel student : students) {
+       for(StudentModel student:students){
     %>
     <tr bgcolor="#CCCF90">
         <td align="center"><%=student.getId()%>
@@ -45,12 +47,10 @@
         <td><%=student.getAddress()%>
         </td>
         <td align="center"><a href="ModifyStudent.jsp?id=<%=student.getId()%>">修改&nbsp;&nbsp;</a>
-            <a href="UserOperatorCenter.jsp?method=3&id=<%=student.getId()%>">删除</a></td>
+            <a href="StudentOperatorCenter.jsp?method=3&id=<%=student.getId()%>">删除</a></td>
 
     </tr>
-    <%
-        }
-    %>
+   <%}%>
 </table>
 </body>
 </html>
