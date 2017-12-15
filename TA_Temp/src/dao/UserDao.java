@@ -15,21 +15,18 @@ public class UserDao {
         connection = new DatabaseConnection();
     }
 
-    public boolean userLogin(UserModel model) {
+    public int userLogin(UserModel model) {
 
         String sql = "select * from user where name='" + model.getName() + "' and password = '" + model.getPassword() + "'";
         ResultSet rs = connection.executeQuery(sql);
         try {
             rs.next();
-            if (rs.getInt(4) == 0) {
-                return true;
-            }
+            return rs.getInt(4);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             connection.close();
         }
-
-        return false;
+        return -1;
     }
 }
