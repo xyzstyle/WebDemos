@@ -1,16 +1,16 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="PersonalBlogV2:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/PersonalBlogV2_war_exploded</output-path>
+  <artifact type="exploded-war" name="PersonalBlogV2_S:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/PersonalBlogV2_S_war_exploded</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="PersonalBlogV2" />
+          <element id="module-output" name="PersonalBlogV2_T" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="mysql-connector-java-5.1.6-bin" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="PersonalBlogV2/web/Web" />
+      <element id="javaee-facet-resources" facet="PersonalBlogV2_T/web/Web" />
     </root>
   </artifact>
 </component>
