@@ -3,7 +3,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="xyz.service.PageCount" %>
 
-<%@ include file="CheckPermission.jsp" %>
 <html>
 <head>
     <title>学生管理</title>

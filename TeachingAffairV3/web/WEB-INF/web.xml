@@ -11,14 +11,7 @@
         <servlet-name>student</servlet-name>
         <url-pattern>/stu.do</url-pattern>
     </servlet-mapping>
-    <filter>
-        <filter-name>CharacterEncodingFilter</filter-name>
-        <filter-class>xyz.filter.CharacterEncodingFilter</filter-class>
-        <init-param>
-            <param-name>charset</param-name>
-            <param-value>UTF-8</param-value>
-        </init-param>
-    </filter>
+
     <servlet>
         <servlet-name>login</servlet-name>
         <servlet-class>xyz.webrouter.LoginServlet</servlet-class>
@@ -27,8 +20,27 @@
         <servlet-name>login</servlet-name>
         <url-pattern>/login.do</url-pattern>
     </servlet-mapping>
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>xyz.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>charset</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+
     <filter-mapping>
         <filter-name>CharacterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>AuthorityFilter</filter-name>
+        <filter-class>xyz.filter.AuthorityFilter</filter-class>
+
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AuthorityFilter</filter-name>
+        <url-pattern>/stu.do</url-pattern>
     </filter-mapping>
 </web-app>
