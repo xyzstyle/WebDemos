@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="user" class="xyz.model.UserModel"/>
-<jsp:useBean id="dao" class="xyz.dao.UserDao"/>
+<jsp:useBean id="dao" class="xyz.dao.impl.UserDao"/>
 <jsp:setProperty name="user" property="*"/>
 
 <html>

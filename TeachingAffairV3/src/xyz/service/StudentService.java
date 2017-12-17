@@ -9,108 +9,55 @@ import xyz.dao.StudentDAO;
 import xyz.dao.impl.StudentDAOImpl;
 import xyz.model.StudentModel;
 
-public class StudentService extends BaseService {
-	private StudentDAO studentDAO;
-	
-	public StudentService(){
-		
-			studentDAO = new StudentDAOImpl();
-	}
+public class StudentService {
+    private StudentDAO studentDAO;
 
-	public boolean addStudent(StudentModel student) {
-		Connection connection = null;
-		try {
-			studentDAO.addStudent(student);
-			Database.commit();
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			message = e.getMessage();
-			Database.rollback();
-			return false;
-		} finally {
-			Database.releaseConnection(connection);
-		}
-	}
+    public StudentService() {
 
-	public boolean updateStudent(StudentModel student) {
-		Connection connection = null;
-		try {
-			
-			studentDAO.updateStudent(student);
-			Database.commit();
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			message = e.getMessage();
-			Database.rollback();
-			return false;
-		} finally {
-			Database.releaseConnection(connection);
-		}
-	}
+        studentDAO = new StudentDAOImpl();
+    }
 
-	public boolean deleteStudent(StudentModel student) {
-		Connection connection = null;
-		try {
-			
-			studentDAO.deleteStudent(student);
-			// 此处可以删除该学生的成绩表中的成绩等
-			Database.commit();
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			message = e.getMessage();
-			Database.rollback();
-			return false;
-		} finally {
-			Database.releaseConnection(connection);
-		}
-	}
+    public boolean addStudent(StudentModel student) {
 
-	public List<StudentModel> listAllStudents() {
-		Connection connection = null;
-		try {
-			
-			return studentDAO.listAllStudents();
-		} catch (Exception e) {
-			e.printStackTrace();
-			message = e.getMessage();
-			Database.rollback();
-		} finally {
-			Database.releaseConnection(connection);
-		}
-		return new ArrayList<StudentModel>();
-	}
+        return studentDAO.addStudent(student);
 
-	public StudentModel getByID(int id) {
-		Connection conn = null;
-		try {
-			
 
-			StudentModel student = studentDAO.getByID(id);
-			Database.commit();
-			return student;
-		} catch (Exception e) {
-			e.printStackTrace();
-			message = e.getMessage();
-			return null;
-		} finally {
-			Database.releaseConnection(conn);
-		}
-	}
+    }
 
-	public List<StudentModel> listStudents(int pageNo, int pageSize) {
+    public boolean updateStudent(StudentModel student) {
 
-		
-		try {
-			
-			return studentDAO.listStudents(pageNo, pageSize);
-		} catch (Exception e) {
-			e.printStackTrace();
-			message = e.getMessage();
-			return null;
-		} 
 
-	}
+        return studentDAO.updateStudent(student);
+
+    }
+
+    public boolean deleteStudent(StudentModel student) {
+
+
+        return studentDAO.deleteStudent(student);
+
+    }
+
+    public List<StudentModel> listAllStudents() {
+
+        return studentDAO.listAllStudents();
+
+    }
+
+    public StudentModel getByID(int id) {
+        return studentDAO.getByID(id);
+    }
+
+    public List<StudentModel> listStudents(int pageNo) {
+        //return studentDAO.listStudents(pageNo, PageCount.STUDENT_PAGE_COUNT);
+        List<StudentModel> all=studentDAO.listAllStudents();
+        List<StudentModel>  part=new ArrayList<>();
+        for(int i=(pageNo-1)*PageCount.STUDENT_PAGE_COUNT;i<pageNo*PageCount.STUDENT_PAGE_COUNT;i++){
+            if (i >= all.size()) {
+                break;
+            }
+            part.add(all.get(i));
+        }
+        return part;
+    }
 }

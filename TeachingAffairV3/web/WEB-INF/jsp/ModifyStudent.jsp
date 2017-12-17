@@ -7,7 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="CheckPermission.jsp" %>
-<jsp:useBean id="dao" class="xyz.dao.StudentDao"/>
 <html>
 <head>
     <title>修改</title>

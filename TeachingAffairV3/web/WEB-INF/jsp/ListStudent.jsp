@@ -1,14 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" import="java.sql.*" language="java" %>
 <%@ page import="xyz.model.StudentModel" %>
 <%@ page import="java.util.List" %>
+<%@ page import="xyz.service.PageCount" %>
 
 <%@ include file="CheckPermission.jsp" %>
 <html>
 <head>
     <title>学生管理</title>
     <%
-        String result= (String) request.getAttribute("result");
-        if(result!=null)
+        String result = (String) request.getAttribute("result");
+        if (result != null)
             out.print(result);
     %>
 
@@ -54,6 +55,29 @@
 
     </tr>
     <%}%>
+    <tr bgcolor="#CCcF90">
+        <%
+            int currentPage = (int) request.getAttribute("currentPage");
+            int maxPageNumber = (int) request.getAttribute("maxPageNumber");
+        %>
+        <td colspan="5" align="right">当前页数：[<%=currentPage%>]&nbsp;&nbsp;<a
+                href='?method=0&pageNumber=1'>第一页</a>&nbsp;&nbsp; <%
+            if (currentPage > 1) {
+        %><a
+                href='?method=0&pageNumber=<%=currentPage - 1%>'>上一页</a> <%
+            }
+        %>&nbsp;&nbsp;<%
+            if (currentPage != maxPageNumber) {
+        %><a
+                href='?method=0&pageNumber=<%=currentPage + 1%>'>下一页</a>
+            <%
+                }
+            %>&nbsp;&nbsp;<a
+                    href='?method=0&pageNumber=<%=maxPageNumber%>'>最后一页</a>&nbsp;&nbsp;
+        </td>
+
+
+    </tr>
 </table>
 </body>
 </html>
