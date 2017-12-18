@@ -6,9 +6,7 @@
         <element id="directory" name="classes">
           <element id="module-output" name="WebDemos" />
         </element>
-        <element id="directory" name="lib">
-          <element id="library" level="project" name="jstl-1.2" />
-        </element>
+        <element id="directory" name="lib" />
       </element>
       <element id="javaee-facet-resources" facet="WebDemos/web/Web" />
     </root>
