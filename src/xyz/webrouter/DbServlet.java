@@ -28,6 +28,10 @@ public class DbServlet extends HttpServlet {
                 break;
         }
     }
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req, resp);
+    }
 
     private void addUser(HttpServletResponse resp) throws  IOException{
         PrintWriter out = resp.getWriter();
@@ -45,8 +49,5 @@ public class DbServlet extends HttpServlet {
         out.print("modify finished");
     }
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req, resp);
-    }
+
 }

@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.xyz.dbc.DatabaseBasis;
+import com.xyz.connection.DatabaseBasis;
 import com.xyz.model.ArticleTypeModel;
 
 public class ArticleTypeDao {

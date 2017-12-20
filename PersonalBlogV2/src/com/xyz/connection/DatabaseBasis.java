@@ -1,4 +1,4 @@
-package com.xyz.dbc;
+package com.xyz.connection;
 
 import java.sql.*;
 

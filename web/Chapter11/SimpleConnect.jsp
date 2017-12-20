@@ -10,7 +10,7 @@
 	<%
 		long startTime = System.currentTimeMillis();
 		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Class.forName("com.mysql.jdbc.Driver");
 			String url = "jdbc:mysql://localhost:3306/db_jw";
 			for (int i = 0; i < 100; i++) {
 
