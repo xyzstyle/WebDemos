@@ -14,6 +14,7 @@ import xyz.model.StudentModel;
 public class StudentDAOImpl implements StudentDAO {
 
     private Connection connection;
+    private PreparedStatement ps;
 
     public StudentDAOImpl() {
 
@@ -23,7 +24,6 @@ public class StudentDAOImpl implements StudentDAO {
     public boolean addStudent(StudentModel student) {
         connection = Database.getConnection();
         String sql = "insert into student(name,password,address) values(?,?,?)";
-        PreparedStatement ps;
         int rows = 0;
         try {
             ps = connection.prepareStatement(sql);
@@ -32,12 +32,12 @@ public class StudentDAOImpl implements StudentDAO {
             ps.setString(i++, student.getPassword());
             ps.setString(i++, student.getAddress());
             rows = ps.executeUpdate();
-            ps.close();
             return rows > 0;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         } finally {
+            closePS(ps);
             Database.releaseConnection(connection);
         }
 
@@ -47,7 +47,6 @@ public class StudentDAOImpl implements StudentDAO {
     public boolean updateStudent(StudentModel student) {
         connection = Database.getConnection();
         String sqlString = "update student set name=?,password=?,address=? where id=?";
-        PreparedStatement ps;
         int rows = 0;
         try {
             ps = connection.prepareStatement(sqlString.toString());
@@ -63,6 +62,7 @@ public class StudentDAOImpl implements StudentDAO {
             e.printStackTrace();
             return false;
         } finally {
+            closePS(ps);
             Database.releaseConnection(connection);
         }
 
@@ -72,9 +72,7 @@ public class StudentDAOImpl implements StudentDAO {
     public boolean deleteStudent(StudentModel student) {
         connection = Database.getConnection();
         String sqlString = "delete from student where id=?";
-        PreparedStatement ps = null;
         int rows = 0;
-
         try {
             ps = connection.prepareStatement(sqlString);
             ps.setInt(1, student.getId());
@@ -82,7 +80,6 @@ public class StudentDAOImpl implements StudentDAO {
             return rows > 0;
         } catch (SQLException e) {
             e.printStackTrace();
-
             return false;
         } finally {
             closePS(ps);
@@ -92,15 +89,13 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public List<StudentModel> listAllStudents() {
+    public List<StudentModel> getAllStudents() {
 
         connection = Database.getConnection();
-        PreparedStatement ps;
         try {
             ps = connection.prepareStatement("select * from student ");
             ResultSet rs = ps.executeQuery();
             List<StudentModel> list = new ArrayList<StudentModel>();
-
             while (rs.next()) {
                 StudentModel studentModel = new StudentModel();
                 int i = 1;
@@ -112,21 +107,20 @@ public class StudentDAOImpl implements StudentDAO {
 
             }
             rs.close();
-            ps.close();
             return list;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         } finally {
+            closePS(ps);
             Database.releaseConnection(connection);
         }
 
     }
 
     @Override
-    public List<StudentModel> listStudents(int curPage, int perpage) {
+    public List<StudentModel> getStudents(int curPage, int perpage) {
         connection = Database.getConnection();
-        PreparedStatement ps;
         try {
             ps = connection.prepareStatement("select * from student limit ?,?");
             ps.setInt(1, (curPage - 1) * perpage);
@@ -144,12 +138,12 @@ public class StudentDAOImpl implements StudentDAO {
 
             }
             rs.close();
-            ps.close();
             return list;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         } finally {
+            closePS(ps);
             Database.releaseConnection(connection);
         }
 
@@ -158,7 +152,6 @@ public class StudentDAOImpl implements StudentDAO {
     @Override
     public StudentModel getByID(long id) {
         connection = Database.getConnection();
-        PreparedStatement ps;
         try {
             ps = connection.prepareStatement("select * from student where id=?");
             ps.setLong(1, id);
@@ -175,6 +168,7 @@ public class StudentDAOImpl implements StudentDAO {
             e.printStackTrace();
             return null;
         } finally {
+            closePS(ps);
             Database.releaseConnection(connection);
         }
 

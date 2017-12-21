@@ -15,7 +15,7 @@ public interface ArticleTypeDao {
 
     public boolean deleteArticleType(ArticleTypeModel model);
 
-    public boolean AddArticleType(ArticleTypeModel model);
+    public boolean addArticleType(ArticleTypeModel model);
 
     /**
      * 根据某个id值，找到特定某种文章类型。

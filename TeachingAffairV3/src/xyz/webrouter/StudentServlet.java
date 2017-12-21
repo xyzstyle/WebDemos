@@ -18,9 +18,6 @@ import java.util.List;
 public class StudentServlet extends HttpServlet {
 
 
-    private StudentService studentService;
-    private StudentModel student = new StudentModel();
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req, resp);
@@ -33,6 +30,7 @@ public class StudentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        StudentModel student = new StudentModel();
         int method = Integer.parseInt(req.getParameter("method"));
         String id = req.getParameter("id");
         if (id != null) {
@@ -46,16 +44,16 @@ public class StudentServlet extends HttpServlet {
                 this.listStudents(req, resp);
                 break;
             case 1:
-                this.addStudent(req, resp);
+                this.addStudent(student, req, resp);
                 break;
             case 2:
-                this.updateStudent(req, resp);
+                this.updateStudent(student, req, resp);
                 break;
             case 3:
-                this.deleteStudent(req, resp);
+                this.deleteStudent(student, req, resp);
                 break;
             case 4:
-                this.modifyStudent(req, resp);
+                this.modifyStudent(student, req, resp);
                 break;
             default:
         }
@@ -63,7 +61,7 @@ public class StudentServlet extends HttpServlet {
     }
 
     private void listStudents(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        studentService = new StudentService();
+        StudentService studentService = new StudentService();
         int currentPage = 1;
         int recordCounts = studentService.listAllStudents().size();
         int maxPageNumber = 1;
@@ -77,17 +75,18 @@ public class StudentServlet extends HttpServlet {
         if (pageNumber != null) {
             currentPage = Integer.parseInt(pageNumber);
         }
-        List<StudentModel> students  = studentService.listStudents(currentPage);
+        List<StudentModel> students = studentService.listStudents(currentPage);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ListStudent.jsp");
-        request.setAttribute("currentPage",currentPage);
-        request.setAttribute("maxPageNumber",maxPageNumber);
+        request.setAttribute("currentPage", currentPage);
+        request.setAttribute("maxPageNumber", maxPageNumber);
         request.setAttribute("students", students);
         requestDispatcher.forward(request, response);
 
     }
 
-    private void addStudent(HttpServletRequest request, HttpServletResponse response)
+    private void addStudent(StudentModel student, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        StudentService studentService;
         if (!student.getName().equals("")) {
             String result;
             studentService = new StudentService();
@@ -103,9 +102,9 @@ public class StudentServlet extends HttpServlet {
         // 不能够使用response.sendRedirect()方法
     }
 
-    private void updateStudent(HttpServletRequest request, HttpServletResponse response)
+    private void updateStudent(StudentModel student, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        studentService = new StudentService();
+        StudentService studentService = new StudentService();
         if (studentService.updateStudent(student)) {
             request.setAttribute("result", "<script language=javascript>alert('修改成功！');</script>");
         } else {
@@ -114,9 +113,9 @@ public class StudentServlet extends HttpServlet {
         listStudents(request, response);
     }
 
-    private void deleteStudent(HttpServletRequest request, HttpServletResponse response)
+    private void deleteStudent(StudentModel student, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        studentService = new StudentService();
+        StudentService studentService = new StudentService();
         if (studentService.deleteStudent(student)) {
             request.setAttribute("result", "<script language=javascript>alert('删除成功！');</script>");
         } else {
@@ -125,10 +124,9 @@ public class StudentServlet extends HttpServlet {
         listStudents(request, response);
     }
 
-    private void modifyStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void modifyStudent(StudentModel student, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-        studentService = new StudentService();
+        StudentService studentService = new StudentService();
         student = studentService.getByID(student.getId());
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ModifyStudent.jsp");
         request.setAttribute("student", student);

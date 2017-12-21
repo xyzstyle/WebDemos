@@ -84,6 +84,7 @@ public class Database {
                 con = dataSource.getConnection();
                 //con.setAutoCommit(false);
                 connections.set(con);
+
                 System.out.println("connection from pool");
                 return con;
             } catch (NamingException e) {
@@ -116,10 +117,6 @@ public class Database {
                 connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            if (connection != null) {
-                connection = null;
-            }
         }
 
     }

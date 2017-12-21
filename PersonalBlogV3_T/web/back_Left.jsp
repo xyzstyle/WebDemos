@@ -19,7 +19,7 @@
 	cellspacing="0" background="images/backgr.jpg">
 	<tr>
 		<td width="45">&nbsp;</td>
-		<td width="182"><a href="back_ArticleSelect.jsp">博客文章设置</a></td>
+		<td width="182"><a href="WEB-INF/jsp/back_ArticleSelect.jsp">博客文章设置</a></td>
 	</tr>
 </table>
 <table width="227" height="25" border="0" cellpadding="0"

@@ -40,7 +40,7 @@ public class StudentService {
 
     public List<StudentModel> listAllStudents() {
 
-        return studentDAO.listAllStudents();
+        return studentDAO.getAllStudents();
 
     }
 
@@ -50,7 +50,7 @@ public class StudentService {
 
     public List<StudentModel> listStudents(int pageNo) {
         //return studentDAO.listStudents(pageNo, PageCount.STUDENT_PAGE_COUNT);
-        List<StudentModel> all=studentDAO.listAllStudents();
+        List<StudentModel> all=studentDAO.getAllStudents();
         List<StudentModel>  part=new ArrayList<>();
         for(int i=(pageNo-1)*PageCount.STUDENT_PAGE_COUNT;i<pageNo*PageCount.STUDENT_PAGE_COUNT;i++){
             if (i >= all.size()) {

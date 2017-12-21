@@ -105,22 +105,11 @@ public class ArticleDaoImpl implements ArticleDao {
      */
     public List<ArticleModel> queryAllArticles() {
         connection = Database.getConnection();
-        PreparedStatement ps=null;
+        PreparedStatement ps = null;
         try {
             ps = connection.prepareStatement("select * from tb_article ");
             ResultSet rs = ps.executeQuery();
-            List<ArticleModel> list = new ArrayList<>();
-            while (rs.next()) {
-                ArticleModel articleModel = new ArticleModel();
-                int i = 1;
-                articleModel.setId(rs.getInt(i++));
-                articleModel.setTypeId(rs.getInt(i++));
-                articleModel.setTitle(rs.getString(i++));
-                articleModel.setContent(rs.getString(i++));
-                articleModel.setPhTime(rs.getString(i++));
-                articleModel.setNumber(rs.getInt(i++));
-                list.add(articleModel);
-            }
+            List<ArticleModel> list = getRecords(rs);
             rs.close();
 
             return list;
@@ -133,7 +122,39 @@ public class ArticleDaoImpl implements ArticleDao {
         }
     }
 
+    public List<ArticleModel> queryArticlesForType(Integer typeID) {
+        connection = Database.getConnection();
+        PreparedStatement ps = null;
+        try {
+            ps = connection.prepareStatement("select * from tb_article where typeID=? order by id desc");
+            ps.setInt(1, typeID);
+            ResultSet rs = ps.executeQuery();
+            List<ArticleModel> list = getRecords(rs);
+            rs.close();
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            Database.releaseConnection(connection);
+        }
+    }
 
+    private List<ArticleModel> getRecords(ResultSet rs) throws SQLException {
+        List<ArticleModel> list = new ArrayList<>();
+        while (rs.next()) {
+            ArticleModel articleModel = new ArticleModel();
+            int i = 1;
+            articleModel.setId(rs.getInt(i++));
+            articleModel.setTypeId(rs.getInt(i++));
+            articleModel.setTitle(rs.getString(i++));
+            articleModel.setContent(rs.getString(i++));
+            articleModel.setPhTime(rs.getString(i++));
+            articleModel.setNumber(rs.getInt(i++));
+            list.add(articleModel);
+        }
+        return list;
+    }
 
     /**
      * 根据某个id值，找到特定某篇文章。
@@ -151,15 +172,14 @@ public class ArticleDaoImpl implements ArticleDao {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                articleModel = new ArticleModel();
-                articleModel.setId(rs.getInt(1));
-                articleModel.setTypeId(rs.getInt(2));
-                articleModel.setTitle(rs.getString(3));
-                articleModel.setContent(rs.getString(4));
-                articleModel.setPhTime(rs.getString(5));
-                articleModel.setNumber(rs.getInt(6));
-            }
+            rs.next();
+            articleModel = new ArticleModel();
+            articleModel.setId(rs.getInt(1));
+            articleModel.setTypeId(rs.getInt(2));
+            articleModel.setTitle(rs.getString(3));
+            articleModel.setContent(rs.getString(4));
+            articleModel.setPhTime(rs.getString(5));
+            articleModel.setNumber(rs.getInt(6));
             return articleModel;
         } catch (SQLException e) {
             e.printStackTrace();

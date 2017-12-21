@@ -13,7 +13,7 @@ import xyz.model.StudentModel;
  *        
  */
 public interface StudentDAO {
-	
+
 
 	public boolean addStudent(StudentModel student) ;
 
@@ -21,9 +21,9 @@ public interface StudentDAO {
 
 	public boolean deleteStudent(StudentModel student) ;
 
-	public List<StudentModel> listAllStudents() ;
+	public List<StudentModel> getAllStudents() ;
 
-	public List<StudentModel> listStudents(int curPage, int perpage) ;
+	public List<StudentModel> getStudents(int curPage, int perpage) ;
 
 	public StudentModel getByID(long id) ;
 

@@ -22,7 +22,7 @@ public class ArticleTypeDaoImpl implements ArticleTypeDao {
 
     }
 
-
+    @Override
     public boolean deleteArticleType(ArticleTypeModel model) {
         connection = Database.getConnection();
         String sql = "delete from tb_articleType where id=?";
@@ -43,8 +43,9 @@ public class ArticleTypeDaoImpl implements ArticleTypeDao {
 
     }
 
-    public boolean AddArticleType(ArticleTypeModel model) {
-
+    @Override
+    public boolean addArticleType(ArticleTypeModel model) {
+        connection=Database.getConnection();
         String sql = "insert into tb_articleType(typeName,description) values (?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -71,6 +72,7 @@ public class ArticleTypeDaoImpl implements ArticleTypeDao {
      * @param id 文章类型所对应的id值
      * @return 文章类型所对应的字符串
      */
+    @Override
     public String queryArticleTypeName(Integer id) {
         connection = Database.getConnection();
         String typeName = null;
@@ -94,6 +96,7 @@ public class ArticleTypeDaoImpl implements ArticleTypeDao {
      * @return 包含ArticleTypeModel的List
      * @see ArticleTypeModel
      */
+    @Override
     public List<ArticleTypeModel> queryArticleType() {
         connection = Database.getConnection();
         List<ArticleTypeModel> list = new ArrayList<ArticleTypeModel>();

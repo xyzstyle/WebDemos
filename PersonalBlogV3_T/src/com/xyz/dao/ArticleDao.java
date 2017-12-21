@@ -26,6 +26,7 @@ public interface ArticleDao {
      * @see ArticleModel
      */
     public List<ArticleModel> queryAllArticles();
+    public List<ArticleModel> queryArticlesForType(Integer typeID);
 
     /**
      * 根据某个id值，找到特定某篇文章。

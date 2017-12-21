@@ -3,6 +3,7 @@ package com.xyz.servlet;
 import com.xyz.dao.ArticleTypeDao;
 import com.xyz.dao.impl.ArticleTypeDaoImpl;
 import com.xyz.model.ArticleTypeModel;
+import com.xyz.service.ArticleTypeService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -40,8 +41,8 @@ public class ArticleTypeServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         ArticleTypeModel articleTypeModel = new ArticleTypeModel();
         articleTypeModel.setId(Integer.valueOf(request.getParameter("id")));
-        ArticleTypeDao articleTypeDao = new ArticleTypeDaoImpl();
-        if (articleTypeDao.deleteArticleType(articleTypeModel)) {
+        ArticleTypeService articleTypeService=new ArticleTypeService();
+        if (articleTypeService.deleteArticleType(articleTypeModel)) {
             out.print("<script language=javascript>alert('删除文章类别成功，请重新查询！');window.location.href='back_ArticleTypeSelect.jsp';</script>");
         } else {
             out.print("<script language=javascript>alert('您需要将类别所在的文章删除,才可删除此类别！');history.go(-1);</script>");
@@ -57,8 +58,8 @@ public class ArticleTypeServlet extends HttpServlet {
         ArticleTypeModel articleTypeModel = new ArticleTypeModel();
         articleTypeModel.setTypeName(request.getParameter("typeName"));
         articleTypeModel.setDescription(request.getParameter("description"));
-        ArticleTypeDao articleTypeDao = new ArticleTypeDaoImpl();
-        if (articleTypeDao.AddArticleType(articleTypeModel)) {
+        ArticleTypeService articleTypeService=new ArticleTypeService();
+        if (articleTypeService.AddArticleType(articleTypeModel)) {
             out.print("<script language=javascript>alert('添加文章类别成功，请重新查询！');window.location.href='back_ArticleTypeSelect.jsp';</script>");
         } else {
             out.print("<script language=javascript>alert('添加文章类别失败！');history.go(-1);</script>");

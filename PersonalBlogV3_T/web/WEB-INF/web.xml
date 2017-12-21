@@ -11,4 +11,13 @@
         <servlet-name>ArticleType</servlet-name>
         <url-pattern>/articleType.do</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Article</servlet-name>
+        <servlet-class>com.xyz.servlet.ArticleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Article</servlet-name>
+        <url-pattern>/article.do</url-pattern>
+    </servlet-mapping>
 </web-app>
